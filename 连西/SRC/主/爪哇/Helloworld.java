@@ -9,10 +9,10 @@ public class Helloworld {
         System.out.println("Hello world!");
  
     
-    public void tsst1();
-    public void tsst2();
-    public void tsst3();
-    public void tsst4();
+    public void tsst5("你好");
+    public void tsst6();
+    public void tsst7();
+    public void tsst8();
     
     }
 }
