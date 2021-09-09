@@ -8,4 +8,11 @@ public class Helloworld {
     public static void main(String[] args) {
         System.out.println("Hello world!");
     }
+
+public void tsst1();
+    public void tsst2();
+    public void tsst3();
+    public void tsst4();
+
+
 }
