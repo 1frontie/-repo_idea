@@ -7,6 +7,7 @@
     <groupId>com.lagou</groupId>
     <artifactId>hello_maven</artifactId>
     <version>1.0-SNAPSHOT</version>
-
+<h1>远程修改</h1>
 
 </project>
+
