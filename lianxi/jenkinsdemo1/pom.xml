@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.lahou</groupId>
+    <artifactId>jenkinsdemo1</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>jenkinsdemo1</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>11</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>jenkinsdemo1</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.2.2</version>
+                <configuration>
+                    <imageName>
+                        ${project.artifactId}:${project.version}</imageName>
+                    <dockerDirectory>${project.basedir}</dockerDirectory>
+                    <!--配置远程docker地址及端口-->
+                     <dockerHost>http://192.168.1.154:2375</dockerHost>
+                    <entryPoint>["java","-jar","/${pom.build.finalName}.jar"]</entryPoint>
+                    <!--maven
+                    <pushImage>true</pushImage>
+                    <registryUrl>192.168.1.155:5000/lahouedu</registryUrl>
+                    -->
+                    <resources>
+                        <targetPath>/</targetPath>
+                        <directory>${project.build.directory}</directory>
+                        <!--把哪个文件上传到docker，相当于Dockerfile里的addapp.jar /-->
+                        <include>${project.build.finalName}.jar</include>
+                    </resources>
+                     </configuration>
+                 </plugin>
+             </plugins>
+         </build>
+
+     </project>
